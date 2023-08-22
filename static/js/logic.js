@@ -12,9 +12,9 @@ d3.json(url).then(data=> {
 
 function createFeatures(earthquakeData) {
     // display the time and place of the earthquake
-    function onEachFeature (features, layer){
-        layer.bindPopup (`<h3>$ {features.properties.place}</h3><hr><p>${new Date(features.properties.time)}</p>`);};
-
+    function onEachFeature(feature, layer) {
+      layer.bindPopup(`<h3>Location:</h3> ${feature.properties.place}<h3> Magnitude:</h3> ${feature.properties.mag}<h3> Depth:</h3> ${feature.geometry.coordinates[2]}`);
+  }
 //Now create the geoJSN layer that has the features array on the earthquakeData object
         let earthquakes = L.geoJson (earthquakeData, {
             onEachFeature: onEachFeature,
